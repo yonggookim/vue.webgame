@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>좋아요</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        
+        <div v-if="liked">좋아요 눌렀음</div><!-- 'v-'가 붙으면 뷰가 통제하게 된다. -->
+        <button v-else v-on:click="onClickButton">Like</button>
+    </div>
+<script>
+    //vue, react에서 중요한 점은 데이타 중심적 사고를 가져가는 것!
+    const app= new Vue({ //컴퍼넌트를 만들어준다.
+        el: '#root', //id가 root인 요소를 컨트롤 한다.
+        data: {
+            liked: false,
+        },
+        methods: {
+            onClickButton(){
+                this.liked= true; //이때 this는 data를 가리킨다.
+            }
+        }      
+    })
+</script>
+</body>
+</html>
