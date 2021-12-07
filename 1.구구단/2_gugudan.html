@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gugudan</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <div>{{first}}곱하기 {{second}}는?</div> 
+        <!-- 아니.. data안의 속성값으로 함수를 만들고.. 그 함수의 결과를
+         html상에 이렇게 출력해버린다.. {{}}의 값은 최종 계산된 값을 문자로 출력
+        html태그 안에서 속성을 부여하여 data에 접근하도록 하는 방법과 비교되네-->
+         
+        <form v-on:submit.prevent="onSubmitForm">
+<<<<<<< HEAD
+            <!-- prevent덕분에 submit시 page가 새로고침 되지 X -->
+            <input type="number" ref="answer" v-model="value"> 
+=======
+            <!-- submit시 page가 새로고침 되지 X -->
+            <input type="number" refer="answer" v-model="value"> 
+>>>>>>> 1864007fedba6d1c127d51546d810d789b9be289
+            <!-- v-model로 input의 value를 data의 value로 받을 수 O
+            refer="answer"를 주면 this.$ref.answer로 태그에 접근가능-->
+            <!-- 이렇게 ref이용하여 태그에 직접접근을 남용하기 시작하면
+            data와 화면상의 출력의 불일치가 생기기 시작하여 문제 될 수 O -->
+            <button>입력</button>
+            <!-- <div>{{value}}</div> -->
+        </form>
+        <div id="result">{{result}}</div>
+    </div>
+    <script>
+        const app = new Vue({
+            el: "#root",
+            data: {
+                first: Math.ceil(Math.random()*9),
+                second: Math.ceil(Math.random()*9),
+                value: '',
+                result: '',
+            },
+            methods: {
+                onSubmitForm(){
+                    // e.preventDafault(); //page의 새로고침을 막아준다?
+                    console.log(this);
+                    console.log(this.first, this.second)
+                    if(this.first * this.second === parseInt(this.value)){
+                        this.result = '정답';
+                        this.first= Math.ceil(Math.random()*9);
+                        this.second= Math.ceil(Math.random()*9);
+                        this.value= '';
+<<<<<<< HEAD
+                        this.$refs.answer.focus(); //UX를 생각하여 fucus유지
+                    }else{
+                        this.result = '땡';
+                        this.value='';
+                        this.$refs.answer.focus();
+=======
+                        this.$ref.answer.focus();
+                    }else{
+                        this.result = '땡';
+                        this.value='';
+                        this.$ref.answer.focus();
+>>>>>>> 1864007fedba6d1c127d51546d810d789b9be289
+                    }
+                },
+            },
+        })
+    </script>
+</body>
+</html>

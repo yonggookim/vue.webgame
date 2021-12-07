@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>좋아요</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <div v-if="liked">좋아요 눌렀음</div><!-- 'v-'가 붙으면 뷰가 통제하게 된다. -->
+        <button v-else v-on:click="onClickButton">Like</button>
+        <!-- '인접한 형제 노드'끼리는 v-if, v-else-if, v-else 를 쓸 수 O-->
+    </div>
+<script>
+    //vue, react에서 중요한 점은 데이타 중심적 사고를 가져가는 것!
+    // Component에서 속성명은 el, data, methods만 꼭 지켜주고 나머진 자유
+    const app= new Vue({ //컴퍼넌트를 만들어준다.
+        el: '#root', // ★ vue가 컨트롤 할 태그를 id로 택
+        data: {
+            liked: false,
+        },
+        methods: {
+            onClickButton(){
+                this.liked= true; //이때 this는 data를 가리킨다.
+            }
+        }      
+    })
+</script>
+</body>
+</html>

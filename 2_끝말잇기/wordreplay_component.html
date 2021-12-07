@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>끝말잇기</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <word-relay start-word="제로초"></word-relay> <!-- vue의 html에는 꼭 kebab case 주의 -->
+        <word-relay start-word="초밥"></word-relay>
+        <word-relay start-word="바보"></word-relay>
+    </div>
+    <script>
+        Vue.component('wordRelay',{ // component쪽에서는 wordRelay로 써도, word-relay로 써도 ok
+            
+            template:`
+                <div>
+                    <div>{{word}}</div>
+                    <form v-on:submit.prevent="onSubmitForm">
+                        <input type="text" ref="aaa" v-model="value">
+                        <button type="submit">입력!</button>
+                    </form>
+                    <div>{{result}}</div>
+                </div>
+            `,
+            props: ['startWord'], //출발 제시어를 서로 다르게 하고싶어..
+            data() { //컴퍼넌트들 간에 데이터가 공유되지 않도록 늘 새로 만들어 반환
+                return{
+                    word: this.startWord,
+                    value: '',
+                    result: '',
+                };
+            },
+            methods:{
+                onSubmitForm(){
+                    if(this.word[this.word.length-1] === this.value[0]){
+                        this.result="딩동댕"
+                        this.word=this.value;
+                        this.value='';
+                        this.$refs.aaa.focus();
+                    }else{
+                        this.result="땡"
+                        this.value='';
+                        this.$refs.aaa.focus();
+                    }
+                }
+            },
+        })
+    </script>
+    <script>
+        // ★ 이건 그냥 참고 ★
+        // kebab 케이스: word-replay // pascal 케이스: WordReplay // camel 케이스: wordReplay
+        const app = new Vue({ //vue instance 생성
+            el: '#root'
+        })
+    </script>
+</body>
+</html>
