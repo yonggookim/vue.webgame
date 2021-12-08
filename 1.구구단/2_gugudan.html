@@ -16,8 +16,13 @@
          
         <form v-on:submit.prevent="onSubmitForm">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <!-- prevent덕분에 submit시 page가 새로고침 되지 X -->
             <input type="number" ref="answer" v-model="value"> 
+=======
+            <!-- submit시 page가 새로고침 되지 X -->
+            <input type="number" refer="answer" v-model="value"> 
+>>>>>>> 1864007fedba6d1c127d51546d810d789b9be289
 =======
             <!-- submit시 page가 새로고침 되지 X -->
             <input type="number" refer="answer" v-model="value"> 
@@ -51,17 +56,23 @@
                         this.second= Math.ceil(Math.random()*9);
                         this.value= '';
 <<<<<<< HEAD
+<<<<<<< HEAD
                         this.$refs.answer.focus(); //UX를 생각하여 fucus유지
                     }else{
                         this.result = '땡';
                         this.value='';
                         this.$refs.answer.focus();
 =======
+=======
+>>>>>>> 1864007fedba6d1c127d51546d810d789b9be289
                         this.$ref.answer.focus();
                     }else{
                         this.result = '땡';
                         this.value='';
                         this.$ref.answer.focus();
+<<<<<<< HEAD
+>>>>>>> 1864007fedba6d1c127d51546d810d789b9be289
+=======
 >>>>>>> 1864007fedba6d1c127d51546d810d789b9be289
                     }
                 },
